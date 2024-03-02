@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios'; // Import axios
+import axios from 'axios'; // thư viện thay cho fetch thuần
 import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -11,27 +11,12 @@ function SaveCategoryForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    // Kiểm tra categoryName không để trống
-    console.log('Category name:', categoryName);
-
-    if (!categoryName.trim()) {
-      console.log('Category name is blank, showing alert.');
-      alert('Category name must not be blank.');
-      return;
-    }
-
-    try {
       // Sử dụng axios để gửi yêu cầu POST
-      const response = await axios.post('/categories/add', {
-        name: categoryName
+      const response = await axios.post('/api/v1/categories/add', {
+        categoryName: categoryName
       });
-
       console.log('Category saved successfully', response.data);
-      navigate('/categories'); // Chuyển hướng tới trang category sau khi lưu
-    } catch (error) {
-      console.error('Failed to save category:', error.response ? error.response.data : error.message);
-    }
+      navigate('/api/v1/categories'); // Chuyển hướng tới trang category sau khi lưu
   };
 
   return (

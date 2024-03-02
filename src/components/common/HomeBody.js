@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function HomeBody() {
     // Cập nhật state để lưu trữ một mảng sản phẩm
-    const [products, setProducts] = useState(null);
+    const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8081/products')
+        fetch('/api/v1/products')
             .then(response => response.json())
             .then(data => {
                 console.log(data)
-                setProducts(data); // Lưu trữ toàn bộ mảng sản phẩm
+                setProducts(data.data); // Lưu trữ toàn bộ mảng sản phẩm
             })
             .catch(error => console.error("Error fetching data: ", error));
     }, []);

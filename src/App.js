@@ -6,7 +6,8 @@ import Col from 'react-bootstrap/Col';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
 import Sidebar from './components/common/Sidebar';
 import HomePage from './pages/common/HomePage';
-import CategoryPage from './pages/admin/CategoryPage'; 
+import CategoryPage from './pages/admin/CategoryPage';
+import ProductPage from './pages/admin/ProductPage'; 
 import SaveCategoryForm from './components/admin/SaveCategoryForm'; 
 
 
@@ -29,8 +30,9 @@ function App() {
           <Col md={10}>
             <Routes> 
               <Route path="/" element={<HomePage />} /> 
-              <Route path="/categories" element={<CategoryPage />} />
-              <Route path="/categories/add" element={<SaveCategoryForm />} />
+              <Route path="/api/v1/categories" element={<CategoryPage />} />
+              <Route path="/api/v1/products" element={<ProductPage />} />
+              <Route path="/api/v1/categories/add" element={<SaveCategoryForm />} />
 
             </Routes>
           </Col>

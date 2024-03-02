@@ -10,24 +10,22 @@ function CategoryBody() {
     }, []);
 
     const fetchCategories = async () => {
-        const response = await fetch('http://localhost:8081/categories');
+        const response = await fetch('/api/v1/categories');
         const data = await response.json();
         console.log(data);
         setCategories(data.data || []);
     };
       
     const handleEdit = (id) => {
-        console.log(`Editing category ${id}`);
+        //
     };
 
     const handleDelete = (id) => {
-        if (window.confirm("Bạn có chắc chắn muốn xóa không?")) {
-            console.log(`Deleting category ${id}`);
-        }
+        //
     };
 
     const handleBlock = (id, isBlocked) => {
-        console.log(`${isBlocked ? 'Unblocking' : 'Blocking'} category ${id}`);
+        //
     };
 
     return (

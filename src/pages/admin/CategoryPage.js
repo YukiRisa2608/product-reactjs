@@ -8,7 +8,7 @@ function CategoryPage() {
     return (
         <Container className="mt-5">
             <div className="d-flex justify-content-end mb-4">
-                <Button variant="primary" as={Link} to="/categories/add">+Add Category</Button>
+                <Button variant="primary" as={Link} to="/api/v1/categories/add">+Add Category</Button>
             </div>
             <CategoryBody />
         </Container>
