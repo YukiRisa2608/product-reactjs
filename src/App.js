@@ -1,24 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
+import Sidebar from './components/common/Sidebar';
+import HomePage from './pages/common/HomePage';
+import CategoryPage from './pages/admin/CategoryPage'; 
+import SaveCategoryForm from './components/admin/SaveCategoryForm'; 
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Container>
+        {/* Title */}
+        <Row>
+          <h2>Welcome!!!</h2>
+        </Row>
+
+        <Row>
+          {/* Sidebar */}
+          <Col md={2} className="sidebar bg-dark text-white">
+            <Sidebar />
+          </Col>
+          
+          {/* Root */}
+          <Col md={10}>
+            <Routes> 
+              <Route path="/" element={<HomePage />} /> 
+              <Route path="/categories" element={<CategoryPage />} />
+              <Route path="/categories/add" element={<SaveCategoryForm />} />
+
+            </Routes>
+          </Col>
+        </Row>
+      </Container>
+    </Router>
   );
 }
 
