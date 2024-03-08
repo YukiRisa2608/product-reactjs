@@ -7,11 +7,12 @@ function ProductBody(props) {
     const { categories, products, onToggleStatus, onDeleteProduct } = props;
     const [productEdit, setProductEdit] = useState(null);
 
+    //Edit
     const handleEdit = (product) => {
-        //
         setProductEdit(product);
     };
 
+    //Delete
     const handleDelete = (id) => {
         onDeleteProduct(id)
     };

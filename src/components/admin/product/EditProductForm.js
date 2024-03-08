@@ -55,7 +55,9 @@ function EditProductForm(props) {
         setProduct({ ...product, price: val.value })
     }
 
-    // setStatus({ value: true });
+    const setQuantity = (val) => {
+        setProduct({ ...product, quantity: val.value })
+    }
 
     console.log(product);
     return (
@@ -126,6 +128,15 @@ function EditProductForm(props) {
                             />
                         </Form.Group>
 
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label>Quantity</Form.Label>
+                            <Form.Control
+                                value={product?.quantity}
+                                onChange={(val) => setQuantity(val.target)}
+                                type="number"
+                                autoFocus
+                            />
+                        </Form.Group>
 
                     </Form>
                 </Modal.Body>

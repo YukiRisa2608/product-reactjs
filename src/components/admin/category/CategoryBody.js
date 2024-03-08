@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { FaEdit, FaTrash, FaBan, FaPlusCircle } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaBan } from 'react-icons/fa';
 import Table from 'react-bootstrap/Table';
-import { faListSquares } from '@fortawesome/free-solid-svg-icons';
 import EditCategoryForm from './EditCategoryForm';
 
 function CategoryBody(props) {
-    const { categories, onEditCategory } = props;
+    const { categories, onEditCategory, onDeleteCategory, onToggleStatus } = props;
     const [showEditCategory, setShowEditCategory] = useState(false);
     const [category, setCategory] = useState(null);
 
@@ -15,13 +14,11 @@ function CategoryBody(props) {
         setShowEditCategory(true);
     };
 
+    //Delete
     const handleDelete = (id) => {
-        //
+        onDeleteCategory(id)
     };
 
-    const handleBlock = (id, isBlocked) => {
-        //
-    };
 
     const handleClose = () => {
         setShowEditCategory(false);
@@ -51,7 +48,7 @@ function CategoryBody(props) {
                             <td>
                                 <FaEdit style={{ color: 'grey', cursor: 'pointer', marginRight: '10px' }} onClick={() => handleEdit(category)} />
                                 <FaTrash style={{ color: 'red', cursor: 'pointer', marginRight: '10px' }} onClick={() => handleDelete(category.id)} />
-                                <FaBan style={{ color: category.isBlocked ? 'grey' : 'blue', cursor: 'pointer' }} onClick={() => handleBlock(category.id, category.isBlocked)} />
+                                <FaBan style={{ color: category?.status === "Active"  ? 'grey' : 'blue', cursor: 'pointer' }} onClick={() => onToggleStatus(category.id)} />
                             </td>
                         </tr>
                     ))}
