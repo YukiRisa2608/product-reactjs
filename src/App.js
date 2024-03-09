@@ -33,7 +33,6 @@ function App() {
               <Route path="/api/v1/categories" element={<CategoryPage />} />
               <Route path="/api/v1/products" element={<ProductPage />} />
               <Route path="/api/v1/categories/add" element={<SaveCategoryForm />} />
-
             </Routes>
           </Col>
         </Row>

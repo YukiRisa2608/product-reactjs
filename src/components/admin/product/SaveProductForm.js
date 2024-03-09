@@ -8,7 +8,7 @@ const sampleProduct = {
     // productId: 1,
     categoryId: 1,
     productName: null,
-    price: 1000.0,
+    price: 1,
     description: "",
     quantity: 1,
     classification: "classification",
@@ -37,6 +37,10 @@ function SaveProductForm(props) {
 
     const setImage = (val) => {
         setProduct({ ...product, imgUrl: val.value })
+    }
+
+    const setQuantity = (val) => {
+        setProduct({ ...product, quantity: val.value })
     }
 
     const setCategoryId = (val) => {
@@ -130,16 +134,16 @@ function SaveProductForm(props) {
                             />
                         </Form.Group>
 
-                        {/* Status */}
-                        {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                            <Form.Check
-                                type="checkbox"
-                                label="Status"
-                                checked={product.status}
-                                onChange={(e) => setProduct({ ...product, status: e.target.checked })}
+                        {/* Quantity */}
+                        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                            <Form.Label>Quantity</Form.Label>
+                            <Form.Control
+                                value={product?.quantity}
+                                onChange={(val) => setQuantity(val.target)}
+                                type="number"
+                                autoFocus
                             />
-                        </Form.Group> */}
-
+                        </Form.Group>
 
 
                     </Form>

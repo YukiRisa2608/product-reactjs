@@ -9,20 +9,22 @@ function CategoryBody(props) {
     const [category, setCategory] = useState(null);
 
 
-    const handleEdit = (category) => {
-        setCategory(category);
-        setShowEditCategory(true);
-    };
-
     //Delete
     const handleDelete = (id) => {
         onDeleteCategory(id)
     };
 
 
+    //show edit form 
     const handleClose = () => {
         setShowEditCategory(false);
     }
+
+    //edit
+    const handleEdit = (category) => {
+        setCategory(category);
+        setShowEditCategory(true);
+    };
 
     return (
         <div>
@@ -44,7 +46,8 @@ function CategoryBody(props) {
                             <td>{category?.id}</td>
                             <td>{category?.categoryName}</td>
                             <td>{category?.createdDate}</td>
-                            <td>{category?.status ? "Active" : "Inactive"}</td>
+                            <td style={{ color: category.status ? 'blue' : 'red' }}>
+                                {category?.status ? "Active" : "Inactive"}</td>
                             <td>
                                 <FaEdit style={{ color: 'grey', cursor: 'pointer', marginRight: '10px' }} onClick={() => handleEdit(category)} />
                                 <FaTrash style={{ color: 'red', cursor: 'pointer', marginRight: '10px' }} onClick={() => handleDelete(category.id)} />

@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'; // thư viện thay cho fetch thuần
-import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import InputGroup from 'react-bootstrap/InputGroup';
 import { Modal } from 'react-bootstrap';
 
 function EditCategoryForm(props) {
@@ -13,7 +11,7 @@ function EditCategoryForm(props) {
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Create category</Modal.Title>
+        <Modal.Title>Edit category</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -36,6 +34,7 @@ function EditCategoryForm(props) {
         </Button>
         <Button variant="primary" onClick={() => {
           onEditCategory(category);
+          //reset form sau khi submit
           setCategory(null)
           handleClose();
         }}>

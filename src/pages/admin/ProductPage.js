@@ -12,6 +12,7 @@ function CategoryPage() {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
 
+    //Add
     const onSaveProduct = async (data) => {
         const response = await fetch('/api/v1/products', {
             method: 'POST',
@@ -69,14 +70,21 @@ function CategoryPage() {
 
     // Method delete product
     const onDeleteProduct = async (productId) => {
-        const response = await fetch(`/api/v1/products/${productId}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        fetchProducts();
+        // Hiển thị cửa sổ xác nhận trước khi xóa
+        const isConfirmed = window.confirm('Do you want to delete this product?');
+        // Nếu người dùng xác nhận muốn xóa
+        if (isConfirmed) {
+            const response = await fetch(`/api/v1/products/${productId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            // Sau khi xóa, gọi fetchProducts để cập nhật danh sách sản phẩm
+            fetchProducts();
+        }
     }
+    
 
 
     useEffect(() => {

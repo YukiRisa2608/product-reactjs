@@ -69,13 +69,16 @@ function ProductBody(props) {
                             <td>{product?.description}</td>
                             <td>{product?.price}</td>
                             <td>{product?.quantity}</td>
-                            <td>{product.status ? 'Active' : 'Inactive'}</td>
+                            <td style={{ color: product.status ? 'blue' : 'red' }}>
+                                {product.status ? 'Active' : 'Inactive'}
+                            </td>
+
                             <td>{product?.createdDate}</td>
                             <td>{product?.lastUpdated}</td>
                             <td>
                                 <FaEdit style={{ color: 'grey', cursor: 'pointer', marginRight: '10px' }} onClick={() => handleEdit(product)} />
                                 <FaTrash style={{ color: 'red', cursor: 'pointer', marginRight: '10px' }} onClick={() => handleDelete(product.productId)} />
-                                <FaBan style={{ color: product.isBlocked ? 'grey' : 'blue', cursor: 'pointer' }} onClick={() => onToggleStatus(product.productId)} />
+                                <FaBan style={{ color: product?.status === "Active" ? 'grey' : 'blue', cursor: 'pointer' }} onClick={() => onToggleStatus(product.productId)} />
                             </td>
                         </tr>
                     ))}
