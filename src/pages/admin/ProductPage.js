@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import ProductBody from '../../components/admin/product/ProductBody';
 import { Modal } from 'bootstrap';
 import SaveProductForm from '../../components/admin/product/SaveProductForm'
-
-
+import ProductService from '../../api/ProductSevice';
+import CategorySevice from '../../api/CategorySevice';
 function CategoryPage() {
 
     const [products, setProducts] = useState([]);
@@ -14,31 +14,32 @@ function CategoryPage() {
 
     //Add
     const onSaveProduct = async (data) => {
-        const response = await fetch('/api/v1/products', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const myJson = await response.json();
+        // const response = await fetch('/api/v1/products', {
+        //     method: 'POST',
+        //     body: JSON.stringify(data),
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // });
+        const myJson = await ProductService.createProduct(data)
         console.log(myJson)
         fetchProducts()
     }
 
     const fetchProducts = async () => {
-        const response = await fetch('/api/v1/products');
-        const data = await response.json();
+        const data = await ProductService.getAllProduct()
+        // const response = await fetch('/api/v1/products');
+        // const data = await response.json();
         console.log(data);
-        setProducts(data.data || []);
+        setProducts(data.data.data || []);
     };
 
     // Fetches all categories
     const fetchAllCategories = async () => {
-        const response = await fetch('/api/v1/categories');
-        const data = await response.json();
+        // const response = await fetch('/api/v1/categories');
+        const data = await CategorySevice.getAllCategories();
         console.log(data);
-        setCategories(data.data || []);
+        setCategories(data.data.data || []);
     }
 
     // Update product
