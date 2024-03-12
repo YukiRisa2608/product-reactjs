@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import ProductBody from '../../components/admin/product/ProductBody';
 import { Modal } from 'bootstrap';
 import SaveProductForm from '../../components/admin/product/SaveProductForm'
-import ProductService from '../../api/ProductSevice';
-import CategorySevice from '../../api/CategorySevice';
+import ProductService from '../../services/ProductSevice';
+import CategorySevice from '../../services/CategorySevice';
 function CategoryPage() {
 
     const [products, setProducts] = useState([]);
@@ -85,7 +85,7 @@ function CategoryPage() {
             fetchProducts();
         }
     }
-    
+
 
 
     useEffect(() => {
